@@ -1,10 +1,10 @@
 # Credit Card Default Classifier
 
-## Problem Statement
+## a. Problem Statement
 
 The objective of this project is to build and compare multiple machine learning classification models to predict whether a credit card client will default on their payment in the next month. 
 
-## Dataset Description
+## b. Dataset Description
 
 The dataset used is the **UCI Credit Card Default Dataset** (also known as "Default of Credit Card Clients Dataset").
 
@@ -30,7 +30,7 @@ The dataset used is the **UCI Credit Card Default Dataset** (also known as "Defa
 | PAY_AMT1 to PAY_AMT6 | Previous payment amount from April to September 2005 (NT dollar) |
 | dpnm | Default payment next month (0 = No, 1 = Yes) - **Target Variable** |
 
-## Models Used
+## c. Models Used
 
 Six classification models were implemented and compared:
 
@@ -45,36 +45,37 @@ Six classification models were implemented and compared:
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---------------|----------|-----|-----------|--------|-----|-----|
-| Logistic Regression | 0.8100 | 0.7270 | 0.6927 | 0.2369 | 0.3530 | 0.3259 |
-| Decision Tree | 0.7210 | 0.6069 | 0.3730 | 0.4037 | 0.3877 | 0.2077 |
-| kNN | 0.7950 | 0.7077 | 0.5487 | 0.3564 | 0.4321 | 0.3247 |
+| Logistic Regression | 0.6925 | 0.7276 | 0.3799 | 0.6405 | 0.4769 | 0.2978 |
+| Decision Tree | 0.7202 | 0.7616 | 0.4113 | 0.6458 | 0.5025 | 0.3368 |
+| kNN | 0.8087 | 0.7328 | 0.6194 | 0.3260 | 0.4271 | 0.3495 |
 | Naive Bayes | 0.7070 | 0.7371 | 0.3967 | 0.6504 | 0.4928 | 0.3218 |
-| Random Forest (Ensemble) | 0.8163 | 0.7574 | 0.6405 | 0.3663 | 0.4661 | 0.3857 |
-| XGBoost (Ensemble) | 0.8148 | 0.7750 | 0.6347 | 0.3625 | 0.4615 | 0.3801 |
+| Random Forest (Ensemble) | 0.7980 | 0.7759 | 0.5378 | 0.5476 | 0.5426 | 0.4131 |
+| XGBoost (Ensemble) | 0.7648 | 0.7610 | 0.4702 | 0.5887 | 0.5228 | 0.3735 |
 
 ## Model Performance Observations
 
 | ML Model Name | Observation about model performance |
 |---------------|-------------------------------------|
-| Logistic Regression | Achieves high accuracy (81%) but suffers from low recall (23.7%), indicating it misses many actual defaulters. The high precision (69.3%) means when it predicts default, it's often correct. Best suited when false positives are costly. |
-| Decision Tree | Lowest overall performance with accuracy of 72.1% and AUC of 0.61. Shows signs of overfitting with poor generalization. The balanced but low precision/recall suggests the model struggles to find meaningful patterns. |
-| kNN | Moderate performance with 79.5% accuracy. Better recall than Logistic Regression (35.6%) but lower precision (54.9%). Sensitive to the choice of k and feature scaling. Performance limited by the curse of dimensionality with 23 features. |
-| Naive Bayes | Lowest accuracy (70.7%) but highest recall (65%) among all models, making it effective at identifying actual defaulters. The independence assumption limits precision (39.7%). Best choice when catching all potential defaults is critical. |
-| Random Forest (Ensemble) | Best overall accuracy (81.6%) and strong AUC (0.76). Good balance between precision (64%) and recall (36.6%). The ensemble approach reduces overfitting seen in single Decision Tree. Highest MCC (0.39) indicates best overall classification quality. |
-| XGBoost (Ensemble) | Second-best accuracy (81.5%) and highest AUC (0.78), indicating excellent ranking ability. Similar performance to Random Forest with slightly better probability calibration. Gradient boosting effectively captures complex feature interactions. |
+| Logistic Regression | Achieves 69.3% accuracy with strong recall (64%), making it effective at identifying defaulters. Lower precision (38%) means more false positives, but the high recall ensures fewer actual defaulters are missed. Best suited when the cost of missing a defaulter outweighs false alarms. |
+| Decision Tree | Solid AUC (0.76) and highest recall (64.6%) among tree-based models. F1 score of 0.50 indicates reasonable balance between precision and recall. Interpretable model that provides clear decision rules for understanding default patterns. |
+| kNN | Highest accuracy (80.9%) and precision (62%) but lowest recall (32.6%). Conservative predictions — when it flags a default, it's usually correct, but misses two-thirds of actual defaulters. Best when false positives are costly and you can afford to miss some defaults. |
+| Naive Bayes | Highest recall (65%) among all models, catching the most defaulters. Trades accuracy (70.7%) for detection capability. The probabilistic approach works well despite the independence assumption. Ideal when identifying all potential defaults is the priority. |
+| Random Forest (Ensemble) | Best overall performer with highest AUC (0.78), MCC (0.41), and F1 score (0.54). Achieves the best balance between precision (54%) and recall (55%). The ensemble approach provides robust predictions. Recommended as the primary model for production use. |
+| XGBoost (Ensemble) | Strong all-around performance with good recall (59%) and solid AUC (0.76). F1 score of 0.52 demonstrates effective balance. Gradient boosting captures complex feature interactions well. Second-best choice for balanced, reliable predictions. |
 
 ## Key Insights
 
-1. **Class Imbalance Impact**: The dataset has imbalanced classes (more non-defaulters than defaulters), which affects all models' ability to detect defaults (low recall across models).
+1. **Ensemble Methods Excel**: Random Forest and XGBoost consistently outperform single models, with Random Forest achieving the best overall balance (highest MCC of 0.41 and F1 of 0.54).
 
-2. **Ensemble Methods Excel**: Random Forest and XGBoost consistently outperform single models, demonstrating the power of ensemble learning for this problem.
+2. **Precision-Recall Trade-off**: Models fall into two categories — high-recall models (Naive Bayes, Logistic Regression, Decision Tree) that catch more defaulters but generate more false alarms, and high-precision models (KNN) that are more conservative but miss more defaults.
 
-3. **Precision-Recall Trade-off**: Models with high accuracy (Logistic Regression, Random Forest, XGBoost) tend to have lower recall, while Naive Bayes sacrifices accuracy for better default detection.
+3. **AUC as Ranking Metric**: Random Forest (0.78) and XGBoost (0.76) have the best AUC scores, indicating superior ability to rank customers by default risk.
 
 4. **Best Model Selection**:
-   - For **overall performance**: Random Forest or XGBoost
-   - For **catching more defaults** (high recall): Naive Bayes
-   - For **confident predictions** (high precision): Logistic Regression
+   - For **overall performance**: Random Forest (best MCC, F1, and AUC balance)
+   - For **catching more defaults** (high recall): Naive Bayes (65%) or Logistic Regression (64%)
+   - For **confident predictions** (high precision): KNN (62%)
+   - For **balanced precision-recall**: Random Forest (54%/55%) or XGBoost (47%/59%)
 
 ## Project Structure
 
