@@ -1,10 +1,10 @@
 # Credit Card Default Classifier
 
-## a. Problem Statement
+## Problem Statement
 
 The objective of this project is to build and compare multiple machine learning classification models to predict whether a credit card client will default on their payment in the next month. 
 
-## b. Dataset Description
+## Dataset Description
 
 The dataset used is the **UCI Credit Card Default Dataset** (also known as "Default of Credit Card Clients Dataset").
 
@@ -30,7 +30,7 @@ The dataset used is the **UCI Credit Card Default Dataset** (also known as "Defa
 | PAY_AMT1 to PAY_AMT6 | Previous payment amount from April to September 2005 (NT dollar) |
 | dpnm | Default payment next month (0 = No, 1 = Yes) - **Target Variable** |
 
-## c. Models Used
+## Models Used
 
 Six classification models were implemented and compared:
 
