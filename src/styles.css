@@ -1,0 +1,195 @@
+/* Custom CSS for Credit Card Default Classifier - Dark Theme */
+
+/* Hide sidebar completely */
+[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] {
+    display: none !important;
+}
+
+/* Dark background */
+.stApp {
+    background-color: #0E1117;
+}
+
+/* Main container styling */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Section card styling */
+.section-card {
+    background-color: #1E2130;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #2D3748;
+}
+
+/* Metric card styling */
+.metric-card {
+    background: linear-gradient(135deg, #1E2130 0%, #2D3748 100%);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    border-left: 3px solid #00D4FF;
+    margin-bottom: 0.5rem;
+}
+
+.metric-card .metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00D4FF;
+    margin: 0;
+}
+
+.metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #A0AEC0;
+    margin: 0;
+}
+
+
+/* Accent color for highlights - cyan */
+.accent-text {
+    color: #00D4FF;
+}
+
+/* Bright label styling for specific text elements */
+.bright-label {
+    color: #00D4FF !important;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Header styling with gradient */
+.app-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00D4FF, #00FF88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.app-description {
+    font-size: 1.1rem;
+    color: #A0AEC0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Section headers */
+.section-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #00D4FF;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #2D3748;
+}
+
+/* File uploader styling */
+[data-testid="stFileUploader"] {
+    background-color: #1E2130;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px dashed #2D3748;
+}
+
+/* File uploader - uploaded file name styling */
+[data-testid="stFileUploader"] [data-testid="stMarkdownContainer"],
+[data-testid="stFileUploader"] small,
+[data-testid="stFileUploader"] span,
+[data-testid="stFileUploader"] .uploadedFileName,
+[data-testid="stFileUploader"] [data-testid="stFileUploaderFileName"] {
+    color: #00D4FF !important;
+}
+
+/* Button styling */
+.stButton > button {
+    background: linear-gradient(90deg, #00D4FF, #00B4D8);
+    color: #0E1117;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(90deg, #00B4D8, #00D4FF);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Download button styling */
+.stDownloadButton > button {
+    background: linear-gradient(90deg, #00D4FF, #00B4D8);
+    color: #0E1117;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Selectbox styling */
+[data-testid="stSelectbox"] {
+    background-color: #1E2130;
+    border-radius: 8px;
+}
+
+/* DataFrame styling */
+[data-testid="stDataFrame"] {
+    background-color: #1E2130;
+    border-radius: 8px;
+}
+
+/* Metric widget styling */
+[data-testid="stMetric"] {
+    background-color: #1E2130;
+    border-radius: 8px;
+    padding: 1rem;
+    border-left: 3px solid #00D4FF;
+}
+
+[data-testid="stMetricValue"] {
+    color: #00D4FF;
+}
+
+/* Metric label styling - make visible */
+[data-testid="stMetricLabel"] {
+    color: #00D4FF !important;
+}
+
+[data-testid="stMetricLabel"] label,
+[data-testid="stMetricLabel"] p,
+[data-testid="stMetricLabel"] div {
+    color: #00D4FF !important;
+}
+
+/* Success/Error/Info message styling */
+.stSuccess {
+    background-color: rgba(0, 255, 136, 0.1);
+    border-left: 3px solid #00FF88;
+}
+
+.stError {
+    background-color: rgba(255, 107, 107, 0.1);
+    border-left: 3px solid #FF6B6B;
+}
+
+.stInfo {
+    background-color: rgba(0, 212, 255, 0.1);
+    border-left: 3px solid #00D4FF;
+}
+
+/* Divider styling */
+hr {
+    border-color: #2D3748;
+    margin: 2rem 0;
+}
