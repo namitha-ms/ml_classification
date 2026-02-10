@@ -12,5 +12,6 @@ class LogisticRegressionClf(BaseClassifier):
     def _create_model(self):
         return LogisticRegression(
             max_iter=self.max_iter,
-            random_state=self.random_state
+            random_state=self.random_state,
+            class_weight='balanced'
         )

@@ -11,5 +11,9 @@ class RandomForestClf(BaseClassifier):
     def _create_model(self):
         return RandomForestClassifier(
             n_estimators=self.n_estimators,
+            max_depth=15,
+            min_samples_split=10,
+            min_samples_leaf=5,
+            class_weight='balanced',
             random_state=self.random_state
         )

@@ -8,4 +8,9 @@ class DecisionTreeClf(BaseClassifier):
         self.random_state = random_state
     
     def _create_model(self):
-        return DecisionTreeClassifier(random_state=self.random_state)
+        return DecisionTreeClassifier(
+            class_weight='balanced',
+            max_depth=8,
+            min_samples_leaf=50,
+            random_state=self.random_state
+        )

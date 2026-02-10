@@ -12,5 +12,6 @@ class XGBoostClf(BaseClassifier):
         return XGBClassifier(
             n_estimators=self.n_estimators,
             random_state=self.random_state,
-            eval_metric='logloss'
+            eval_metric='logloss',
+            scale_pos_weight=3.5
         )

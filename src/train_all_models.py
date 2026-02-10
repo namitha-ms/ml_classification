@@ -6,7 +6,7 @@ Loads data, trains all six models, evaluates them, and saves artifacts.
 from typing import Dict, Type
 import numpy as np
 
-from src.data_processing import load_dataset, preprocess_data
+from src.data_processing import load_dataset, preprocess_data, count_class_distribution
 from src.models import LogisticRegressionClf, DecisionTreeClf, KNNClf, NaiveBayesClf, RandomForestClf, XGBoostClf
 from src.models.base_model import BaseClassifier
 from src.model_utils import save_metrics
@@ -53,6 +53,12 @@ def main():
     print("Loading dataset...")
     features, target = load_dataset("data/credit_card_default.csv")
     print(f"Dataset loaded: {features.shape[0]} samples, {features.shape[1]} features")
+    
+    # Print class distribution
+    print("\nClass Distribution:")
+    distribution = count_class_distribution(target)
+    for key, value in distribution.items():
+        print(f"  {key}: {value}")
     
     print("\nPreprocessing data...")
     X_train, X_test, y_train, y_test = preprocess_data(features, target)
