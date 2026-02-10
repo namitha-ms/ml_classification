@@ -65,6 +65,25 @@ def load_dataset(data_path: str = "data/default of credit card clients.csv") -> 
     return features, target
 
 
+def count_class_distribution(target: pd.Series) -> dict:
+
+    value_counts = target.value_counts()
+    negative_count = value_counts.get(0, 0)
+    positive_count = value_counts.get(1, 0)
+    total = negative_count + positive_count
+    
+    scale_pos_weight = negative_count / positive_count if positive_count > 0 else 0
+    
+    return {
+        'negative_class (0)': negative_count,
+        'positive_class (1)': positive_count,
+        'total': total,
+        'negative_ratio': negative_count / total if total > 0 else 0,
+        'positive_ratio': positive_count / total if total > 0 else 0,
+        'scale_pos_weight': round(scale_pos_weight, 2)
+    }
+
+
 def preprocess_data(
     features: pd.DataFrame,
     target: pd.Series,
