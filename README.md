@@ -4,7 +4,7 @@
 
 The objective of this project is to build and compare multiple machine learning classification models to predict whether a credit card client will default on their payment in the next month. 
 
-## Dataset Description
+##  Dataset Description
 
 The dataset used is the **UCI Credit Card Default Dataset** (also known as "Default of Credit Card Clients Dataset").
 
@@ -58,7 +58,7 @@ Six classification models were implemented and compared:
 |---------------|-------------------------------------|
 | Logistic Regression | Achieves 69.3% accuracy with strong recall (64%), making it effective at identifying defaulters. Lower precision (38%) means more false positives, but the high recall ensures fewer actual defaulters are missed. Best suited when the cost of missing a defaulter outweighs false alarms. |
 | Decision Tree | Solid AUC (0.76) and highest recall (64.6%) among tree-based models. F1 score of 0.50 indicates reasonable balance between precision and recall. Interpretable model that provides clear decision rules for understanding default patterns. |
-| kNN | Highest accuracy (80.9%) and precision (62%) but lowest recall (32.6%). Conservative predictions — when it flags a default, it's usually correct, but misses two-thirds of actual defaulters. Best when false positives are costly and you can afford to miss some defaults. |
+| kNN | Highest accuracy (80.9%) and precision (62%) but lowest recall (32.6%). When it flags a default, it's usually correct, but misses two-thirds of actual defaulters. Best when false positives are costly and you can afford to miss some defaults. |
 | Naive Bayes | Highest recall (65%) among all models, catching the most defaulters. Trades accuracy (70.7%) for detection capability. The probabilistic approach works well despite the independence assumption. Ideal when identifying all potential defaults is the priority. |
 | Random Forest (Ensemble) | Best overall performer with highest AUC (0.78), MCC (0.41), and F1 score (0.54). Achieves the best balance between precision (54%) and recall (55%). The ensemble approach provides robust predictions. Recommended as the primary model for production use. |
 | XGBoost (Ensemble) | Strong all-around performance with good recall (59%) and solid AUC (0.76). F1 score of 0.52 demonstrates effective balance. Gradient boosting captures complex feature interactions well. Second-best choice for balanced, reliable predictions. |
@@ -82,7 +82,7 @@ Six classification models were implemented and compared:
 ```
 ├── data/
 │   ├── credit_card_default.csv    # Original dataset
-│   └── test_data.csv              # Test data with labels (unscaled)
+│   └── test_data.csv              # Test data with labels
 ├── model/
 │   ├── logistic_regression.pkl    # Trained models
 │   ├── decision_tree.pkl
@@ -98,7 +98,15 @@ Six classification models were implemented and compared:
 │   ├── model_utils.py             # Model utilities
 │   ├── train_all_models.py        # Training script
 │   ├── validate_models.py         # Model validation script
+│   ├── styles.css                 # Custom CSS for Streamlit app
 │   └── models/                    # Model class implementations
+│       ├── base_model.py          # Base classifier class
+│       ├── logistic_regression.py # Logistic Regression implementation
+│       ├── decision_tree.py       # Decision Tree implementation
+│       ├── knn.py                 # K-Nearest Neighbors implementation
+│       ├── naive_bayes.py         # Naive Bayes implementation
+│       ├── random_forest.py       # Random Forest implementation
+│       └── xgboost_model.py       # XGBoost implementation
 └── README.md
 ```
 
